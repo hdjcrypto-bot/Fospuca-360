@@ -1069,7 +1069,8 @@ elif st.session_state.vista_actual in sedes_nombres:
 
         st.subheader("Control Diario")
         
-        unidades = db.query(Unidad).filter_by(sede_id=sede_obj.id).all()
+        unidades = db.query(Unidad).filter_by(sede_id=sede_obj.id).order_by(Unidad.numero.asc()).all()
+        #unidades = db.query(Unidad).filter_by(sede_id=sede_obj.id).all()
         personal_sede = db.query(Personal).filter_by(sede_id=sede_obj.id).all()
         conductores = [p for p in personal_sede if p.cargo in ["Conductor", "Mecánico","Jefe de Contrato","Coord. de Operaciones","Jefe de Taller","Supervisor de Guardia" ]]
 
